@@ -1,0 +1,58 @@
+﻿@model Parchmentum.Web.Controllers.BlogIndexModel
+
+@{
+    ViewBag.Title = "Blog";
+}
+
+
+<div class="mb-5 pb-5">
+    @for (var i = 0; i < Model.Posts.List.Count; i++)
+    {
+        var post = Model.Posts.List[i];
+        <div>
+            <h2>
+                <a class="text-reset text-decoration-none" href="@Url.Action("Index", "Post", new { slug = post.Slug })">@post.Title</a>
+            </h2>
+            <div class="mb-4">
+                <small>@post.PubDate.ToString("f")</small>
+            </div>
+
+            <div>
+                @Html.Raw(post.Content)
+            </div>
+
+            <div class="mt-4">
+                Tags: @post.TagString
+            </div>
+        </div>
+
+        @if (i < Model.Posts.List.Count - 1)
+        {
+            <hr class="my-5" />
+        }
+    }
+</div>
+
+
+@{
+    var previousPage = Model.Posts.Page == 2 ? (int?)null : Math.Clamp(Model.Posts.Page - 1, 1, Model.Posts.PageCount);
+    var nextPage = (int?)Math.Clamp(Model.Posts.Page + 1, 1, Model.Posts.PageCount);
+    var minPage = Math.Clamp(Model.Posts.Page - 2, 1, Model.Posts.PageCount - 4);
+    var maxPage = Math.Clamp(Model.Posts.Page + 2, 5, Model.Posts.PageCount);
+}
+<nav>
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(Model.Posts.Page <= 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = previousPage })">Previous</a>
+        </li>
+        @for (var i = minPage; i <= maxPage; i++)
+        {
+            <li class="page-item @(i == Model.Posts.Page ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { page = i == 1 ? (int?)null : i })">@i</a>
+            </li>
+        }
+        <li class="page-item @(Model.Posts.Page >= Model.Posts.PageCount ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Index", new { page = nextPage })">Next</a>
+        </li>
+    </ul>
+</nav>

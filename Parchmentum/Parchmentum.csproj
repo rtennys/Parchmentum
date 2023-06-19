@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <Target Name="SetVersions" BeforeTargets="GetAssemblyVersion">
+    <!-- %25 == '%' -->
+    <!-- In Windows git, we have to escape the % sign with double: %% (or %25%25) -->
+    <PropertyGroup Condition="!$([MSBuild]::IsOSUnixLike())">
+      <CommitTimeCommand>git show -s --date=format-local:"%25%25Y.%25%25m%25%25d.%25%25H%25%25M" --format="%25%25cd"</CommitTimeCommand>
+    </PropertyGroup>
+    <PropertyGroup Condition="$([MSBuild]::IsOSUnixLike())">
+      <CommitTimeCommand>git show -s --date=format-local:"%25Y.%25m%25d.%25H%25M" --format="%25cd"</CommitTimeCommand>
+    </PropertyGroup>
+
+    <Exec Command="$(CommitTimeCommand)" ConsoleToMSBuild="True" IgnoreExitCode="False">
+      <Output PropertyName="CommitTime" TaskParameter="ConsoleOutput" />
+    </Exec>
+
+    <Exec Command="git rev-parse --short HEAD" ConsoleToMSBuild="True" IgnoreExitCode="False">
+      <Output PropertyName="CommitHash" TaskParameter="ConsoleOutput" />
+    </Exec>
+
+    <CreateProperty Value="$(CommitTime)">
+      <Output PropertyName="Version" TaskParameter="Value" />
+    </CreateProperty>
+    <CreateProperty Value="$(CommitTime)">
+      <Output PropertyName="FileVersion" TaskParameter="Value" />
+    </CreateProperty>
+    <CreateProperty Value="$(CommitTime).$(CommitHash)">
+      <Output PropertyName="InformationalVersion" TaskParameter="Value" />
+    </CreateProperty>
+  </Target>
+
+</Project>

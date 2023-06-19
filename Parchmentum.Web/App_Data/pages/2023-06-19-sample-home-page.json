@@ -1,0 +1,11 @@
+{
+  "Id": "1A26E567-DA4F-4E23-B9B2-A864C2DF05B2",
+  "DateCreated": "2023-06-19T00:00:00",
+  "DateModified": "2023-06-19T00:00:00",
+  "IsDeleted": false,
+  "IsPublished": true,
+  "IsFrontPage": true,
+  "Slug": "sample-home-page",
+  "Title": "Sample Home Page",
+  "Content": "<p>This is a sample home page</p>"
+}

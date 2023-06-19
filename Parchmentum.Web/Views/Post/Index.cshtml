@@ -1,0 +1,56 @@
+﻿@using Parchmentum
+@model Parchmentum.Web.Controllers.PostIndexModel
+
+@{
+    ViewBag.Title = Model.Post?.Title ?? "Unknown post";
+}
+
+@if (Model.Post == null)
+{
+    <p>Page not found</p>
+    return;
+}
+
+<h1>@Model.Post.Title</h1>
+
+<div class="mb-4">
+    <small>@Model.Post.PubDate.ToString("f")</small>
+</div>
+
+<div>
+    @Html.Raw(Model.Post.Content)
+</div>
+
+@if (Model.Post.Tags?.Count > 0)
+{
+    <div class="mt-4">
+        Tags: @Model.Post.TagString
+    </div>
+}
+
+@{
+    var count = Model.Post.NonTrackbackCommentCount();
+}
+@if (count > 0)
+{
+    <div class="mt-4">
+        <strong>Comments (@count)</strong>
+
+        @foreach (var comment in Model.Post.NonTrackbackComments())
+        {
+            <div class="card my-4">
+                <h5 class="card-header">
+                    <div class="d-flex align-items-center">
+                        <img src="@(GravatarHelper.GetGravatarLink(comment.Email)).jpg?d=identicon&s=28" alt="@comment.Author" />
+                        <span class="ms-2">@comment.Author</span>
+                        <small class="ms-auto">@comment.Date.ToString("g")</small>
+                    </div>
+                </h5>
+                <div class="card-body">
+                    <p class="card-text">@Html.Raw(comment.Content)</p>
+                </div>
+            </div>
+        }
+
+    </div>
+}

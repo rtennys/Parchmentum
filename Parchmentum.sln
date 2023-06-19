@@ -10,7 +10,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parchmentum", "Parchmentum\Parchmentum.csproj", "{0695A462-951D-4D16-AF6A-33D373980708}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parchmentum.Web", "Parchmentum.Web\Parchmentum.Web.csproj", "{240B01A3-60E1-484D-A2D6-6673809229AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parchmentum.XmlConverter", "Parchmentum.XmlConverter\Parchmentum.XmlConverter.csproj", "{35D9DF7A-46E3-427E-9FDF-E0BDA4A56B23}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0695A462-951D-4D16-AF6A-33D373980708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0695A462-951D-4D16-AF6A-33D373980708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0695A462-951D-4D16-AF6A-33D373980708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0695A462-951D-4D16-AF6A-33D373980708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{240B01A3-60E1-484D-A2D6-6673809229AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{240B01A3-60E1-484D-A2D6-6673809229AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{240B01A3-60E1-484D-A2D6-6673809229AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{240B01A3-60E1-484D-A2D6-6673809229AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D9DF7A-46E3-427E-9FDF-E0BDA4A56B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D9DF7A-46E3-427E-9FDF-E0BDA4A56B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D9DF7A-46E3-427E-9FDF-E0BDA4A56B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D9DF7A-46E3-427E-9FDF-E0BDA4A56B23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

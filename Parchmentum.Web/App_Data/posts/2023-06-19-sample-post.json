@@ -1,0 +1,13 @@
+{
+  "Id": "F388067B-01C4-4C63-9DFE-5C149F96308E",
+  "PubDate": "2023-06-19T00:00:00",
+  "LastModified": "2023-06-19T00:00:00",
+  "IsDeleted": false,
+  "IsPublished": true,
+  "IsCommentsEnabled": true,
+  "Slug": "sample-post",
+  "Title": "Sample Blog Post",
+  "Content": "<p>This is a sample blog post</p>",
+  "Tags": null,
+  "Comments": null
+}

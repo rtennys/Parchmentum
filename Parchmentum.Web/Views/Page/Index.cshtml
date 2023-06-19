@@ -1,0 +1,15 @@
+﻿@model Parchmentum.Web.Controllers.PageIndexModel
+
+@{
+    ViewBag.Title = Model.Page?.Title ?? "Unknown page";
+}
+
+@if (Model.Page == null)
+{
+    <p>Page not found</p>
+    return;
+}
+
+<h1 class="mb-4">@Model.Page.Title</h1>
+
+@Html.Raw(Model.Page.Content)

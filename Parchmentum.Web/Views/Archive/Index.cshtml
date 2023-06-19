@@ -1,0 +1,33 @@
+﻿@model Parchmentum.Web.Controllers.ArchiveIndexModel
+
+@{
+    ViewBag.Title = "Archive";
+}
+
+<h1 class="mb-4">Archive</h1>
+
+<div>
+    <table class="table table-sm table-dark table-hover w-auto">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Title</th>
+                <th scope="col">Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model.Posts)
+            {
+                <tr>
+                    <td>@post.PubDate.ToShortDateString()</td>
+                    <td>
+                        <a href="@Url.Action("Index", "Post", new { slug = post.Slug })">@post.Title</a>
+                    </td>
+                    <td class="text-center">
+                        @post.NonTrackbackCommentCount()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

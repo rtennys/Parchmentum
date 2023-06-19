@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Parchmentum.XmlConverter": {
+      "commandName": "Project",
+      "commandLineArgs": "D:\\Temp\\BlogengineNetFiles"
+    }
+  }
+}
